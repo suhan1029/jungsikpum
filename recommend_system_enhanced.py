@@ -213,7 +213,7 @@ def display_food_recommendations(df, title, emoji, color_scheme):
                 '''
 
             nutrition_html += '</div>'
-            st.markdown(nutrition_html, unsafe_allow_html=True)
+            st.components.v1.html(nutrition_html, height=120, scrolling=False)
         
         st.markdown("</div>", unsafe_allow_html=True)
     

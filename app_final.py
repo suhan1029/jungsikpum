@@ -630,7 +630,7 @@ with st.expander("🤖 AI 종합 건강 가이드 및 추천사항"):
         </div>
     </div>
     """
-    st.markdown(guide_html, unsafe_allow_html=True)
+    st.components.v1.html(guide_html, height=600, scrolling=True)
 
 # 메인 컨테이너 종료
 st.markdown('</div>', unsafe_allow_html=True)
