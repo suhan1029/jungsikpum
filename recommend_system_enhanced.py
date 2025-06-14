@@ -172,33 +172,46 @@ def display_food_recommendations(df, title, emoji, color_scheme):
             st.plotly_chart(fig, use_container_width=True)
         
         with col2:
-            # 영양소 정보를 가로 한 줄로 표시
+            # 영양소 정보를 한 줄로 간결하게 표시
             nutrition_data = []
-            icons = {'총 열량': '⚡', '나트륨': '🧂', '탄수화물': '🍞', '당류': '🍯', '지방': '🥑', '단백질': '🥩'}
-            
+            icons = {
+                '총 열량': '⚡',
+                '나트륨': '🧂',
+                '탄수화물': '🍞',
+                '당류': '🍯',
+                '지방': '🥑',
+                '단백질': '🥩'
+            }
+
             for nutrient in ['총 열량', '나트륨', '탄수화물', '당류', '지방', '단백질']:
                 if nutrient in row.index:
-                    nutrition_data.append((icons.get(nutrient, '📊'), nutrient, row[nutrient]))
-            
-            # 영양소 정보를 한 줄로 간결하게 표시
-            nutrition_html = '<div style="display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 1rem; align-items: center;">'
-            
+                    nutrition_data.append(
+                        (icons.get(nutrient, '📊'), nutrient, row[nutrient])
+                    )
+
+            # 레이아웃을 가로형 그리드로 구성해 공간 활용도 향상
+            nutrition_html = (
+                '<div style="display:grid; grid-template-columns:'
+                ' repeat(auto-fit, minmax(120px,1fr)); gap:0.4rem; '
+                'margin-top:1rem;">'
+            )
+
             for icon, nutrient, value in nutrition_data:
                 nutrition_html += f'''
-                <span style="
+                <div style="
                     background: linear-gradient(135deg, {color_scheme[0]}20, {color_scheme[1]}20);
-                    padding: 0.4rem 0.8rem;
+                    padding: 0.4rem 0.6rem;
                     border-radius: 20px;
                     font-size: 0.85rem;
                     font-weight: 600;
                     color: #333;
                     border: 1px solid {color_scheme[0]}40;
-                    white-space: nowrap;
+                    text-align: center;
                 ">
                     {icon} {nutrient}: <strong>{value}</strong>
-                </span>
+                </div>
                 '''
-            
+
             nutrition_html += '</div>'
             st.markdown(nutrition_html, unsafe_allow_html=True)
         
@@ -235,7 +248,7 @@ def display_food_recommendations(df, title, emoji, color_scheme):
             padding: 1rem;
             border-bottom: 1px solid #e0e0e0;
             transition: all 0.3s ease;
-            color: #333 !important;
+            color: #222 !important;
             font-weight: 500 !important;
         }}
         .enhanced-table tr:nth-child(even) td {{
@@ -250,7 +263,7 @@ def display_food_recommendations(df, title, emoji, color_scheme):
         }}
         .enhanced-table tr:first-child td {{
             font-weight: 700 !important;
-            color: {color_scheme[0]} !important;
+            color: #222 !important;
             background-color: #f0f8ff;
         }}
         </style>

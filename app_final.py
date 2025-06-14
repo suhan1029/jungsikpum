@@ -515,8 +515,7 @@ reco2(user2)
 
 # AI 추천사항
 with st.expander("🤖 AI 종합 건강 가이드 및 추천사항"):
-    # CSS 스타일을 먼저 정의
-    st.markdown("""
+    guide_style = """
     <style>
     .ai-guide-container {
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -569,15 +568,15 @@ with st.expander("🤖 AI 종합 건강 가이드 및 추천사항"):
         font-size: 1.3rem;
     }
     </style>
-    """, unsafe_allow_html=True)
-    
-    # HTML 콘텐츠
-    st.markdown("""
+    """
+    st.markdown(guide_style, unsafe_allow_html=True)
+
+    guide_html = """
     <div class="ai-guide-container">
         <div style="text-align: center; margin-bottom: 2rem;">
             <h2 style="margin: 0; font-size: 2rem;">🎯 개인 맞춤 건강 관리 전략</h2>
         </div>
-        
+
         <div class="guide-grid">
             <div class="guide-card">
                 <h4>🥬 식단 관리</h4>
@@ -588,7 +587,7 @@ with st.expander("🤖 AI 종합 건강 가이드 및 추천사항"):
                     <li><strong>균형 잡힌 영양</strong> - 필수 영양소 공급</li>
                 </ul>
             </div>
-            
+
             <div class="guide-card">
                 <h4>💪 운동 계획</h4>
                 <ul>
@@ -598,7 +597,7 @@ with st.expander("🤖 AI 종합 건강 가이드 및 추천사항"):
                     <li><strong>활동량 증가</strong> - 일상 속 움직임</li>
                 </ul>
             </div>
-            
+
             <div class="guide-card">
                 <h4>🏥 건강 모니터링</h4>
                 <ul>
@@ -608,7 +607,7 @@ with st.expander("🤖 AI 종합 건강 가이드 및 추천사항"):
                     <li><strong>증상 관찰</strong> - 변화 모니터링</li>
                 </ul>
             </div>
-            
+
             <div class="guide-card">
                 <h4>🧘‍♀️ 생활 습관</h4>
                 <ul>
@@ -619,18 +618,19 @@ with st.expander("🤖 AI 종합 건강 가이드 및 추천사항"):
                 </ul>
             </div>
         </div>
-        
+
         <div class="ai-insight">
             <h4>💡 AI 분석 결과</h4>
             <p>
-                현재 건강 상태를 종합 분석한 결과, <strong>체계적인 식단 관리</strong>와 <strong>꾸준한 운동</strong>을 통해 
-                건강 지표 개선이 가능할 것으로 예상됩니다. 특히 BMI 지수와 운동량을 고려할 때, 
+                현재 건강 상태를 종합 분석한 결과, <strong>체계적인 식단 관리</strong>와 <strong>꾸준한 운동</strong>을 통해
+                건강 지표 개선이 가능할 것으로 예상됩니다. 특히 BMI 지수와 운동량을 고려할 때,
                 <strong>저탄수화물 식단</strong>과 <strong>규칙적인 유산소 운동</strong>이 가장 효과적일 것으로 분석됩니다.
                 지속적인 모니터링과 함께 개인 맞춤형 관리 계획을 실천해보세요!
             </p>
         </div>
     </div>
-    """, unsafe_allow_html=True)
+    """
+    st.markdown(guide_html, unsafe_allow_html=True)
 
 # 메인 컨테이너 종료
 st.markdown('</div>', unsafe_allow_html=True)
